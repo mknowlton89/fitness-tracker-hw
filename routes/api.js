@@ -1,32 +1,7 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
-const path = require('path');
-
-// router.get("/exercise", async (req, res) => {
-//     res.sendFile('public/exercise.html');
-// });
-// router.get('/exercise', (req, res) => res.sendFile(path.join(__dirname, 'public/exercise.html')));
 
 
-// router.post("/api/transaction", ({ body }, res) => {
-//   Transaction.create(body)
-//     .then(dbTransaction => {
-//       res.json(dbTransaction);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
-
-// router.post("/api/transaction/bulk", ({ body }, res) => {
-//   Transaction.insertMany(body)
-//     .then(dbTransaction => {
-//       res.json(dbTransaction);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
 
 router.get("/api/workouts", (req, res) => {
     Workout.find({})
@@ -39,8 +14,20 @@ router.get("/api/workouts", (req, res) => {
         });
 });
 
-// router.get("/stats", (req, res) => {
-//     res.send(stats.html);
-// });
+router.post('/api/workouts', (req, res) => {
+    Workout.create({})
+        .then(newWorkout => {
+            console.log(newWorkout);
+            res.json(newWorkout);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
+});
+
+router.put('/api/workouts/:id', (req, res) => {
+    //Update the workout with the id that is passed in via the req.params
+    //Update the workout by adding a new exercise that is in the req.body
+})
 
 module.exports = router;
