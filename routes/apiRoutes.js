@@ -34,10 +34,14 @@ router.put('/api/workouts/:id', (req, res) => {
 
 router.get('/api/workouts/range', (req, res) => {
     Workout.aggregate(
-        // [
-        //     { $match: {} },
-        //     { $group: { day: "$day", total: { $sum: exercise[0]."$duration" } } }
-        // ]
+        [
+            { $match: {} },
+            {
+                $addFields: {
+                    totalDuration: { $sum: "$exercises.duration" }
+                }
+            },
+        ]
     )
         .sort({ day: -1 })
         .limit(7)
