@@ -29,11 +29,19 @@ router.put('/api/workouts/:id', (req, res) => {
         res.json(data);
     }).catch(err => {
         res.json(err);
-    })
+    });
 });
 
-// router.get('/api/workouts/range', (req, res) => {
-//     Workout.
-// });
+router.get('/api/workouts/range', (req, res) => {
+    Workout.find()
+        .sort({ date: -1 })
+        .limit(7)
+        .then((data) => {
+            console.log(data);
+            res.json(data);
+        }).catch(err => {
+            res.json(err);
+        });
+});
 
 module.exports = router;
