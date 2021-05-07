@@ -20,7 +20,7 @@ The user should be able to:
 
   *̶ A̶d̶d̶ n̶e̶w̶ e̶x̶e̶r̶c̶i̶s̶e̶s̶ t̶o̶ a̶ n̶e̶w̶ w̶o̶r̶k̶o̶u̶t̶ p̶l̶a̶n̶.̶
 
-  * View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
+  * V̶i̶e̶w̶ t̶h̶e̶ c̶o̶m̶b̶i̶n̶e̶d̶ w̶e̶i̶g̶h̶t̶ o̶f̶ m̶u̶l̶t̶i̶p̶l̶e̶ e̶x̶e̶r̶c̶i̶s̶e̶s̶ f̶r̶o̶m̶ t̶h̶e̶ p̶a̶s̶t̶ s̶e̶v̶e̶n̶ w̶o̶r̶k̶o̶u̶t̶s̶ o̶n̶ t̶h̶e̶ `̶s̶t̶a̶t̶s̶`̶ p̶a̶g̶e̶.̶
 
   * View the total duration of each workout from the past seven workouts on the `stats` page.
 
