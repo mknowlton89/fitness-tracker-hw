@@ -1,36 +1,46 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
 const workoutSchema = new Schema({
-  name: {
-    type: String,
-    trim: true,
-    required: "Workout must have a name"
+  day: {
+    type: Date,
+    default: Date.now
   },
-  type: {
-    type: String,
-    trim: true,
-    required: "Workout must have a type"
-  },
-  weight: {
-    type: Number,
-    required: "You must enter the weight"
-  },
-  sets: {
-    type: Number,
-    required: "You must enter the number of sets"
-  },
-  reps: {
-    type: Number,
-    required: "You must enter the number of reps"
-  },
-  duration: {
-    type: Number,
-    required: "You must enter the duration"
-  },
+  exercises: [
+    {
+      type: {
+        type: String,
+        trim: true,
+        required: "Enter an exercise type",
+      },
+      name: {
+        type: String,
+        trim: true,
+        required: "Enter an exercise name",
+      },
+      duration: {
+        type: Number,
+        required: "Enter an exercise duration in minutes",
+      },
+      weight: {
+        type: Number,
+      },
+      reps: {
+        type: Number,
+      },
+      sets: {
+        type: Number,
+      },
+      distance: {
+        type: Number,
+      },
+    }
+  ]
 });
 
-const Workout = mongoose.model("Workout", workoutSchema);
+// What mongoose & sequelize does is if you do not set it to override the name of the collections, it will lowercase and pluralize. 
+// So the collection name you'll see in your database is workouts
+const Workout = mongoose.model('Workout', workoutSchema);
 
 module.exports = Workout;

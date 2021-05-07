@@ -1,34 +1,33 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const path = require('path');
-// const routes = require("./controllers");
+const express = require('express');
+const logger = require('morgan');
+const mongoose = require('mongoose');
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3001;
 
 const app = express();
+
+app.use(logger('dev'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static("public"));
 
+// Just like how we connected to MYSQL using the MYSQL library or the SEQUELIZE library, we need to connect to the mongodb library using mongoose
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-    }
-  );
+  process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
-app.use(require("./routes/api.js"));
-
-app.get('/exercise', (req, res) => res.sendFile(path.join(__dirname, 'public/exercise.html')));
-app.get('/stats', (req, res) => res.sendFile(path.join(__dirname, 'public/stats.html')));
-
+// routes
+app.use(require('./routes/htmlRoutes'));
+app.use(require('./routes/apiRoutes'));
 
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}!`);
-});
+  console.log(`App running on PORT ${PORT}`);
+})
